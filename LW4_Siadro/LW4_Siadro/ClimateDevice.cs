@@ -100,7 +100,7 @@ namespace LW4_Siadro
             return calculateEnergyUsage;
         }
 
-        public void String()
+        public virtual void String()
         {
             Console.WriteLine(" {0}, {1}, {2}", Temperature, Humidity, Duration);
         }
