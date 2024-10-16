@@ -107,6 +107,7 @@ namespace LW4_Siadro
 
                         case 4:
                             Console.Clear();
+                            airConditioner = null;
                             MainMenu(); // повернення в головне меню
                             isInputCorrect = false;
                             break;
@@ -143,25 +144,26 @@ namespace LW4_Siadro
                     {
                         case 1:
                             Console.Clear();
-                            CreateClimateDeviceMenu(2); // меню: 
+                            CreateClimateDeviceMenu(2);
                             isInputCorrect = false;
                             break;
 
                         case 2:
                             Console.Clear();
-                            CheckClimateDeviceInfo(2); // вивід інформації в меню
+                            CheckClimateDeviceInfo(2);
                             isInputCorrect = false;
                             break;
 
                         case 3:
                             Console.Clear();
-                            SelectingСalculationУnergyСonsumption(2); // перевірка на існування даних
+                            CheckingExistenceClimateDevice(2);
                             isInputCorrect = false;
                             break;
 
                         case 4:
                             Console.Clear();
-                            MainMenu(); // повернення в головне меню
+                            heater = null;
+                            MainMenu();
                             isInputCorrect = false;
                             break;
                     }
@@ -209,12 +211,13 @@ namespace LW4_Siadro
 
                         case 3:
                             Console.Clear();
-                            SelectingСalculationУnergyСonsumption(3); // перевірка на існування даних
+                            CheckingExistenceClimateDevice(3); // перевірка на існування даних
                             isInputCorrect = false;
                             break;
 
                         case 4:
                             Console.Clear();
+                            airHumidifier = null;
                             MainMenu(); // повернення в головне меню
                             isInputCorrect = false;
                             break;
