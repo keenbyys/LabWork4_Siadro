@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AirConditioner.cs" />
+    <Compile Include="AirHumidifier.cs" />
     <Compile Include="ClimateDevice.cs" />
+    <Compile Include="Heater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

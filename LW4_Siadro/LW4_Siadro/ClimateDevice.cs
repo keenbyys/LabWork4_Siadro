@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace LW4_Siadro
 {
-    internal class ClimateDevice
+    class ClimateDevice
     {
         private double temperature;
         private int humidity;
-        private int duration;
+        private double duration;
 
         public double Temperature
         {
@@ -30,7 +30,7 @@ namespace LW4_Siadro
             }
         }
 
-        public int Duration
+        public double Duration
         {
             get { return duration; }
             set { if (value > 0)
@@ -39,11 +39,12 @@ namespace LW4_Siadro
 
         public ClimateDevice()
         {
-            Temperature = 10;
-            Humidity = 30;
+            temperature = 10;
+            humidity = 30;
+            duration = 60;
         }
 
-        public ClimateDevice(double temperature, int humidity, int duration)
+        public ClimateDevice(double temperature, int humidity, double duration)
         {
             Temperature = temperature;
             Humidity = humidity;
@@ -55,54 +56,62 @@ namespace LW4_Siadro
             Console.WriteLine(" Device is turn on.");
         }
 
-        public int CalculateEnergyUsage(int duration, int choice)
+        public double CalculateEnergyUsage()
         {
-            int watt = 40;
-            int calculateEnergyUsage = 0;
-            int i;
+            double watt = 0.04;
+            double calculateEnergyUsage = 0;
+            double countHours;
 
-            for (i = 1; i <= duration / 60; i++)
-            {
-                calculateEnergyUsage = watt * i;
-            }
-            
+
+            countHours = duration / 60;
+
+            calculateEnergyUsage = watt * countHours;
+
             return calculateEnergyUsage;
         }
 
-        public double CalculateEnergyUsage(double duration, double choice)
+        public double CalculateEnergyUsage(int choice)
         {
-            double wattHumidifier = 40.0;
-            double wattAirConditioner = 3000.0;
-            double wattHeater = 2500.0;
-            double calculateEnergyUsage = 0.0;
-            int i;
-            double countHours = 0.0;
-            double coefficient = 1.2;
+            double kilowattsHumidifier = 0.04;
+            double kilowattsAirConditioner = 3;
+            double kilowattsHeater = 2.5;
 
-            for (i = 1; i <= duration / 60; i++)
-            {
-                countHours = i;
-            }
+            double countHours;
+
+            double coefficientAirConditioner = 1.5;
+            double coefficientHeater = 1.2;
+            double coefficientHumidifier = 0.8;
+
+            double calculateEnergyUsage = 0.0;
+
+            countHours = duration / 60;
 
             switch (choice)
             {
                 case 1:
-                    calculateEnergyUsage = wattAirConditioner * countHours * coefficient;
+                    calculateEnergyUsage = kilowattsAirConditioner * countHours * coefficientAirConditioner;
                     break;
                 case 2:
-                    calculateEnergyUsage = wattHeater * countHours * coefficient;
+                    calculateEnergyUsage = kilowattsHeater * countHours * coefficientHeater;
                     break;
                 case 3:
-                    calculateEnergyUsage = wattHumidifier * countHours * coefficient;
+                    calculateEnergyUsage = kilowattsHumidifier * countHours * coefficientHumidifier;
                     break;
             }
 
             return calculateEnergyUsage;
         }
 
+        public virtual void SetUp()
+        {
+            Console.WriteLine(" Device has default data.");
+        }
+
         public virtual void String()
         {
-            Console.WriteLine(" {0}, {1}, {2}", Temperature, Humidity, Duration);
+            Console.WriteLine("\n Temperature = {0} degrees Celsius." +
+                "\n Duration = {1} min." +
+                "\n Humidity = {2}%", Temperature, Duration, Humidity);
         }
     }
 }
